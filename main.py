@@ -15,7 +15,6 @@ from random import *
 from math import *
 from kivy.uix.scatter import Scatter
 from kivy.core.window import Window
-from kivy.graphics.transformation import Matrix
 
 class Table(Widget):
 
