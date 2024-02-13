@@ -39,7 +39,7 @@ class Table(Widget):
 
         window_width, window_height = Window.size
         pos = self.parent.pos
-        self.parent.pos = (max(30, min(pos[0], window_width - 30 - self.size[0])), max(30, min(pos[1], window_height - 80 - self.size[1])))
+        self.parent.pos = (max(40, min(pos[0], window_width - 40 - self.size[0])), max(40, min(pos[1], window_height - 90 - self.size[1])))
         
 
 class Chair(Widget):
@@ -66,7 +66,7 @@ class Chair(Widget):
 
         window_width, window_height = Window.size
         pos = self.parent.pos
-        self.parent.pos = (max(30, min(pos[0], window_width - 30 - self.size[0])), max(30, min(pos[1], window_height - 80 - self.size[1])))
+        self.parent.pos = (max(40, min(pos[0], window_width - 40 - self.size[0])), max(40, min(pos[1], window_height - 90 - self.size[1])))
 
 class Wardrobe(Widget):
     
@@ -90,7 +90,7 @@ class Wardrobe(Widget):
     
         window_width, window_height = Window.size
         pos = self.parent.pos
-        self.parent.pos = (max(30, min(pos[0], window_width - 30 - self.size[0])), max(30, min(pos[1], window_height - 80 - self.size[1])))
+        self.parent.pos = (max(40, min(pos[0], window_width - 40 - self.size[0])), max(40, min(pos[1], window_height - 90 - self.size[1])))
 
 class Armchair(Widget):
     
@@ -130,7 +130,7 @@ class Armchair(Widget):
 
         window_width, window_height = Window.size
         pos = self.parent.pos
-        self.parent.pos = (max(30, min(pos[0], window_width - 30 - self.size[0])), max(30, min(pos[1], window_height - 80 - self.size[1])))
+        self.parent.pos = (max(40, min(pos[0], window_width - 40 - self.size[0])), max(40, min(pos[1], window_height - 90 - self.size[1])))
 
 class Sofa(Widget):
     
@@ -170,13 +170,13 @@ class Sofa(Widget):
 
         window_width, window_height = Window.size
         pos = self.parent.pos
-        self.parent.pos = (max(30, min(pos[0], window_width - 30 - self.size[0])), max(30, min(pos[1], window_height - 80 - self.size[1])))
-
+        self.parent.pos = (max(40, min(pos[0], window_width - 40 - self.size[0])), max(40, min(pos[1], window_height - 90 - self.size[1])))
+        
 class MyWindow(Widget):
 
     rect = None
     border = None
-    size = (120, 24)
+    size = (120, 34)
     wall = None
 
     def __init__(self, **kwargs):
@@ -186,36 +186,36 @@ class MyWindow(Widget):
 
         with self.canvas:
             Color(0, 0, 0)
-            self.border = Rectangle(size = (120, 24))
+            self.border = Rectangle(size = self.size)
 
             Color(164 / 255, 199 / 255, 205 / 255)
-            self.rect = Rectangle(size = (120, 20), pos = (0, 2))
+            self.rect = Rectangle(size = (120, 30), pos = (0, 2))
 
     def on_touch_move(self, touch):
         prev = self.wall
         window_width, window_height = Window.size
         x, y = self.parent.pos[0] + touch.pos[0], self.parent.pos[1] + touch.pos[1]
-        if (30 <= x <= window_width - 30 and 10 <= y <= 30):
+        if (40 <= x <= window_width - 40 and 10 <= y <= 40):
             self.wall = 'DOWN'
-            self.size = (120, 24)
+            self.size = (120, 34)
             self.border.size = self.size
             self.rect.size = (self.size[0], self.size[1] - 4)
             self.rect.pos = (0, 2)
-        elif (30 <= x <= window_width - 30 and window_height - 80 <= y <= window_height - 60):
+        elif (40 <= x <= window_width - 40 and window_height - 90 <= y <= window_height - 60):
             self.wall = 'UP'
-            self.size = (120, 24)
+            self.size = (120, 34)
             self.border.size = self.size
             self.rect.size = (self.size[0], self.size[1] - 4)
             self.rect.pos = (0, 2)
-        elif (10 <= x <= 30 and 30 <= y <= window_height - 80):
+        elif (10 <= x <= 40 and 40 <= y <= window_height - 90):
             self.wall = 'LEFT'
-            self.size = (24, 120)
+            self.size = (34, 120)
             self.border.size = self.size
             self.rect.size = (self.size[0] - 4, self.size[1])
             self.rect.pos = (2, 0)
-        elif (window_width - 30 <= x <= window_width - 10 and 30 <= y <= window_height - 80):
+        elif (window_width - 40 <= x <= window_width - 10 and 40 <= y <= window_height - 90):
             self.wall = 'RIGHT'
-            self.size = (24, 120)
+            self.size = (34, 120)
             self.border.size = self.size
             self.rect.size = (self.size[0] - 4, self.size[1])
             self.rect.pos = (2, 0)
@@ -228,20 +228,20 @@ class MyWindow(Widget):
         window_width, window_height = Window.size
         pos = self.parent.pos
         if self.wall == 'DOWN':
-            x, y = max(30, min(pos[0], window_width - 26 - self.size[0])), 10
+            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), 10
         elif self.wall == 'UP':
-            x, y = max(30, min(pos[0], window_width - 26 - self.size[0])), window_height - 84
+            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), window_height - 90
         elif self.wall == 'LEFT':
-            x, y = 10, max(30, min(pos[1], window_height - 204 - self.size[1]))
+            x, y = 10, max(40, min(pos[1], window_height - 90 - self.size[1]))
         elif self.wall == 'RIGHT':
-            x, y = window_width - 34, max(30, min(pos[1], window_height - 204 - self.size[1]))
+            x, y = window_width - 40, max(40, min(pos[1], window_height - 90 - self.size[1]))
         self.parent.pos = (x, y)
 
 class Door(Widget):
 
     rect = None
     border = None
-    size = (124, 24)
+    size = (124, 34)
     wall = None
 
     def __init__(self, **kwargs):
@@ -251,30 +251,30 @@ class Door(Widget):
 
         with self.canvas:
             Color(0, 0, 0)
-            self.border = Rectangle(size = (124, 24))
+            self.border = Rectangle(size = self.size)
 
             Color(97 / 255, 79 / 255, 70 / 255)
-            self.rect = Rectangle(size = (120, 20), pos = (2, 2))
+            self.rect = Rectangle(size = (120, 30), pos = (2, 2))
 
     def on_touch_move(self, touch):
         prev = self.wall
         window_width, window_height = Window.size
         x, y = self.parent.pos[0] + touch.pos[0], self.parent.pos[1] + touch.pos[1]
-        if (30 <= x <= window_width - 30 and 10 <= y <= 30):
+        if (40 <= x <= window_width - 40 and 10 <= y <= 40):
             self.wall = 'DOWN'
-            self.size = (124, 24)
+            self.size = (124, 34)
             self.border.size = self.size
-        elif (30 <= x <= window_width - 30 and window_height - 80 <= y <= window_height - 60):
+        elif (40 <= x <= window_width - 40 and window_height - 90 <= y <= window_height - 60):
             self.wall = 'UP'
-            self.size = (124, 24)
+            self.size = (124, 34)
             self.border.size = self.size
-        elif (10 <= x <= 30 and 30 <= y <= window_height - 80):
+        elif (10 <= x <= 40 and 40 <= y <= window_height - 90):
             self.wall = 'LEFT'
-            self.size = (24, 124)
+            self.size = (34, 124)
             self.border.size = self.size
-        elif (window_width - 30 <= x <= window_width - 10 and 30 <= y <= window_height - 80):
+        elif (window_width - 40 <= x <= window_width - 10 and 40 <= y <= window_height - 90):
             self.wall = 'RIGHT'
-            self.size = (24, 124)
+            self.size = (34, 124)
             self.border.size = self.size
         self.rect.size = (self.size[0] - 4, self.size[1] - 4)
         self.rect.pos = (2, 2)
@@ -287,13 +287,13 @@ class Door(Widget):
         window_width, window_height = Window.size
         pos = self.parent.pos
         if self.wall == 'DOWN':
-            x, y = max(30, min(pos[0], window_width - 26 - self.size[0])), 10
+            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), 10
         elif self.wall == 'UP':
-            x, y = max(30, min(pos[0], window_width - 26 - self.size[0])), window_height - 84
+            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), window_height - 90
         elif self.wall == 'LEFT':
-            x, y = 10, max(30, min(pos[1], window_height - 204 - self.size[1]))
+            x, y = 10, max(40, min(pos[1], window_height - 90 - self.size[1]))
         elif self.wall == 'RIGHT':
-            x, y = window_width - 34, max(30, min(pos[1], window_height - 204 - self.size[1]))
+            x, y = window_width - 40, max(40, min(pos[1], window_height - 90 - self.size[1]))
         self.parent.pos = (x, y)
 
 
@@ -325,13 +325,13 @@ class Room(FloatLayout):
             )
             Color(255, 255, 255)
             self.floor = Rectangle(
-                size = (self.size[0] - 40, self.size[1] - 40),
-                pos = (self.pos[0] + 20, self.pos[1] + 20)
+                size = (self.size[0] - 60, self.size[1] - 60),
+                pos = (self.pos[0] + 30, self.pos[1] + 30)
             )
 
     def _update_rect(self, instance, value):
-        self.floor.pos = (instance.pos[0] + 20, instance.pos[1] + 20)
-        self.floor.size = (instance.size[0] - 40, instance.size[1] - 40)
+        self.floor.pos = (instance.pos[0] + 30, instance.pos[1] + 30)
+        self.floor.size = (instance.size[0] - 60, instance.size[1] - 60)
         self.wall.pos = instance.pos
         self.wall.size = instance.size
 
