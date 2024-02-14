@@ -230,11 +230,11 @@ class MyWindow(Widget):
         if self.wall == 'DOWN':
             x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), 10
         elif self.wall == 'UP':
-            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), window_height - 90
+            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), window_height - 94
         elif self.wall == 'LEFT':
             x, y = 10, max(40, min(pos[1], window_height - 90 - self.size[1]))
         elif self.wall == 'RIGHT':
-            x, y = window_width - 40, max(40, min(pos[1], window_height - 90 - self.size[1]))
+            x, y = window_width - 44, max(40, min(pos[1], window_height - 90 - self.size[1]))
         self.parent.pos = (x, y)
 
 class Door(Widget):
@@ -289,11 +289,11 @@ class Door(Widget):
         if self.wall == 'DOWN':
             x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), 10
         elif self.wall == 'UP':
-            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), window_height - 90
+            x, y = max(40, min(pos[0], window_width - 40 - self.size[0])), window_height - 94
         elif self.wall == 'LEFT':
             x, y = 10, max(40, min(pos[1], window_height - 90 - self.size[1]))
         elif self.wall == 'RIGHT':
-            x, y = window_width - 40, max(40, min(pos[1], window_height - 90 - self.size[1]))
+            x, y = window_width - 44, max(40, min(pos[1], window_height - 90 - self.size[1]))
         self.parent.pos = (x, y)
 
 
